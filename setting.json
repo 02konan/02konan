@@ -1,0 +1,11 @@
+{
+ "controller": [
+  "Controllers",
+  "<?php\n\nnamespace Controllers;\n\nclass {name} extends \\Core\\BaseController\n{{\n    protected string $Model = \"{name}\";\n   \n}}\n"
+],
+"model": [
+    "Models",
+    "<?php\n\nnamespace Models;\n\nuse Core\\Model;\n\nclass {name} extends Model\n{{\n\n}}\n\n"
+ ],
+ "core": "Core\\config.php"
+}
