@@ -48,9 +48,13 @@ class Locataire extends Model
       }
     } 
     public function getdetails(){
+      
       $data = $this->Connect();
+      
       $info=array();
-      if (isset($_GET['modifier'])&& isset($_GET['modifier'])) {
+      
+      if (isset($_GET['modifier'])) {
+      
         $locataireId=$_GET['modifier'];
        
         if (is_numeric($_GET['modifier'])) {
@@ -58,8 +62,10 @@ class Locataire extends Model
         $stmt=$data->prepare($sql);
         $stmt->bindValue(':id',$locataireId);
         $stmt->execute();
+      
         $info = $stmt->fetch();
-       }
+      
+      }
       }
       return $info;
     }

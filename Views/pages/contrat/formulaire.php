@@ -25,7 +25,6 @@
                                                 <?=$item["Nom"] ?>
                                                 </option>
                                             <?php endforeach ?>
-
                                         </select>
                                     </div>
                                     <div class="form-group">
