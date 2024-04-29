@@ -28,8 +28,8 @@ class Contrat extends \Core\BaseController
     public function vue()
 {
     $vues= $this->Database->getvue();
-    $stat= $this->Database->getstat();
-    view('pages/contrat/voire',compact('vues','stat'));
+    // $stat= $this->Database->getstat();
+    view('pages/contrat/voire',compact('vues'));
 }
 
 }

@@ -162,24 +162,24 @@ class contrat extends Model
         
 
     }
-    public function getstat(){
-        $data = $this->Connect();
-        $sql = "SELECT locataire.Nom as Locataire_Nom,propriété.Nom as Propriété_Nom,paiementloyer.Montant as loyer, contrat.ID
-                ,contrat.Montant as Montant,Durée,locataire.Adresse,locataire.Coordonnées,contrat.Date_de_début,contrat.Date_de_fin 
-                FROM `paiementloyer`,contrat,locataire,propriété
-                WHERE paiementloyer.ID_Contrat=contrat.ID AND contrat.ID_Locataire=locataire.ID AND contrat.ID_Propriété=propriété.ID";
-                $resulta=$this->SelectRow($sql);
+    // public function getstat(){
+    //     $data = $this->Connect();
+    //     $sql = "SELECT locataire.Nom as Locataire_Nom,propriété.Nom as Propriété_Nom,paiementloyer.Montant as loyer, contrat.ID
+    //             ,contrat.Montant as Montant,Durée,locataire.Adresse,locataire.Coordonnées,contrat.Date_de_début,contrat.Date_de_fin 
+    //             FROM `paiementloyer`,contrat,locataire,propriété
+    //             WHERE paiementloyer.ID_Contrat=contrat.ID AND contrat.ID_Locataire=locataire.ID AND contrat.ID_Propriété=propriété.ID";
+    //             $resulta=$this->SelectRow($sql);
                 
-                $données=[];
-                 foreach($resulta as $row){
-                    $Montant=$row['Montant'];
-                    $Duree=$row['Durée'];
-                    $tltx=$Montant*$Duree;
-                    $row['totaux']=$tltx;
-                    $données=$row;
-                 }
-                 return  $données; 
-             }
+    //             $données=[];
+    //              foreach($resulta as $row){
+    //                 $Montant=$row['Montant'];
+    //                 $Duree=$row['Durée'];
+    //                 $tltx=$Montant*$Duree;
+    //                 $row['totaux']=$tltx;
+    //                 $données=$row;
+    //              }
+    //              return  $données; 
+    //          }
 
     }
 
