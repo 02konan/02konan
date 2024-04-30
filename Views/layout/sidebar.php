@@ -38,16 +38,6 @@
                         <li><a href="table_flux">Flux</a></li>
                     </ul>
                 </li>
-                <li class="nav-label">EXTRA</li>
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Pages <span class="label label-rouded label-success pull-right">8</span></span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="#" class="has-arrow">Authentication <span class="label label-rounded label-success">6</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="facture.php">Invoice</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </nav>
     </div>

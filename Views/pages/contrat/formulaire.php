@@ -20,7 +20,7 @@
                                     <div class="form-group">
                                         <label class="control-label">Nom de la Propriete</label>
                                         <select name="Nompropriete" class="form-control" id="">
-                                            <?php foreach ($form_getpl as $item): ?>
+                                            <?php foreach ($InsertIdprop as $item): ?>
                                                 <option value="<?=$item["ID"] ?>">
                                                 <?=$item["Nom"] ?>
                                                 </option>
@@ -29,11 +29,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Durée</label>
-                                        <input type="text"  name="duree" class="form-control">
+                                        <input  value="<?= isset($Details['Durée'])?$Details['Durée']:"" ?>" type="text"  name="duree" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Date de debut</label>
-                                        <input type="date"  name="date_d" class="form-control">
+                                        <input value="<?= isset($Details['Date_de_début'])?$Details['Date_de_début']:"" ?>" type="date"  name="date_d" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -41,31 +41,32 @@
                                         <label class="control-label">Nom du Locataire</label>
 
                                         <select name="Nomlocataire" class="form-control" id="">
-                                            <?php foreach ($form_getloc as $item): ?>
-                                                <option value="<?=$item["ID"] ?>">
-                                                <?=$item["Nom"] ?>
+                                            <?php foreach ($InsertIdloc as $item): ?>
+                                                <option value="<?= !empty($Details) && $Details['ID_Locataire']==$item["ID"]?$Details['ID']:$item["ID"] ?>">
+                                                <?= !empty($Details) && $Details['Locataire_Nom']==$item["Nom"]?$Details['Locataire_Nom']:$item["Nom"] ?>
                                                 </option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Montant</label>
-                                        <input type="text" name="Montant" class="form-control form-control-danger">
+                                        <input value="<?= isset($Details['Montant'])?$Details['Montant']:"" ?>" type="text" name="Montant" class="form-control form-control-danger">
 
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Date de fin</label>
-                                        <input type="date"  name="date_f" class="form-control">
+                                        <input value="<?= isset($Details['Date_de_fin'])?$Details['Date_de_fin']:"" ?>" type="date"  name="date_f" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Type de contrat</label>
                                         <select name="type" class="form-control">
-                                            <option value="Location">Location</option>
+                                            <option value="<?= isset($Details['Type'])?$Details['Type']:"" ?>">
+                                            <?= isset($Details['Type'])?$Details['Type']:"" ?></option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                         <div class="form-actions">
                             <button type="submit" name="submit" class="btn btn-success"> <i class="fa fa-check"></i>
                                 Save</button>

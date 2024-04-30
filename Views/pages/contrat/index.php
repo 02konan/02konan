@@ -47,12 +47,12 @@
                                                     <?= $item['Date_de_début'] ?>
                                                 </th>
                                                 <th>
-                                                    <?= $item['Date_de_fin'] ?>
+                                                    <?= $item['Date_de_fin'] ?> 
                                                 </th> 
                                                 <th class="mx-5">
                                                     <a href="/formulaire_contrat?modifier=<?= $item['ID'] ?>"><i class="bi bi-pencil-square"></i></a>
                                                     <a href="/voire?vue=<?= $item['ID'] ?>"><i class="bi bi-eye-fill"></i></a>
-                                                    <a href="?suprimer=<?= $item['ID'] ?>"><i class="bi bi-trash-fill"></i></a>
+                                                    <a href="/table_contrat?suprimer=<?= $item['ID'] ?>"><i class="bi bi-trash-fill"></i></a>
                                                 </th>
                                             </tr>
                                         <?php endforeach ?>
@@ -67,3 +67,5 @@
     </div>
 </div>
 <?php require 'Views/layout/footer.php' ?>
+
+ 

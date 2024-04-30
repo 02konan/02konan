@@ -70,9 +70,8 @@ class contrat extends Model
     public function getDetails()
     {
         $data = $this->Connect();
-        $contrat_info = array();
-
-        if (isset ($_GET['modifier']) && is_numeric($_GET['modifier'])) {
+        $resultat=array();
+        if (isset ($_GET['modifier'])) {
             $contratId = $_GET['modifier'];
 
             if (is_numeric($contratId)) {
@@ -90,14 +89,8 @@ class contrat extends Model
                 $resultat = $stmt->fetch();
             }
         }
-       
-        foreach ($resultat as $row) {
-            $Montant=$row['contrat.Montant'];
-            $Duree=$row['contrat.Durée'];
-            $tataux=$Montant*$Duree;
-            
-        }
-        
+        return $resultat;
+
     }
 
     public function getUpdate()
@@ -138,13 +131,12 @@ class contrat extends Model
     public function getvue()
     {
         $data = $this->Connect();
-        $vue_info = array();
 
         if (isset ($_GET['vue']) && is_numeric($_GET['vue'])) {
             $vue = $_GET['vue'];
 
             if (is_numeric($vue)) {
-                $sql = "SELECT locataire.Nom as Locataire_Nom,propriété.Nom as Propriété_Nom,paiementloyer.Montant as loyer, contrat.ID
+                $sql = "SELECT locataire.Nom as Locataire,propriété.Nom as Propriété,paiementloyer.Montant as loyer, contrat.ID
                 ,contrat.Montant as Montant,Durée,locataire.Adresse,locataire.Coordonnées,contrat.Date_de_début,contrat.Date_de_fin 
                 FROM `paiementloyer`,contrat,locataire,propriété
                 WHERE paiementloyer.ID_Contrat=contrat.ID AND contrat.ID_Locataire=locataire.ID AND contrat.ID_Propriété=propriété.ID AND contrat.ID = :id";
@@ -152,34 +144,29 @@ class contrat extends Model
                 $stmt = $data->prepare($sql);
                 $stmt->bindParam(':id', $vue);
                 $stmt->execute();
-
-                $vue_info= $stmt->fetch();
+                $données = $stmt->fetchAll(\PDO::FETCH_ASSOC);
                
             }
         }
-        return$vue_info;
-       
-        
 
     }
-    // public function getstat(){
-    //     $data = $this->Connect();
-    //     $sql = "SELECT locataire.Nom as Locataire_Nom,propriété.Nom as Propriété_Nom,paiementloyer.Montant as loyer, contrat.ID
-    //             ,contrat.Montant as Montant,Durée,locataire.Adresse,locataire.Coordonnées,contrat.Date_de_début,contrat.Date_de_fin 
-    //             FROM `paiementloyer`,contrat,locataire,propriété
-    //             WHERE paiementloyer.ID_Contrat=contrat.ID AND contrat.ID_Locataire=locataire.ID AND contrat.ID_Propriété=propriété.ID";
-    //             $resulta=$this->SelectRow($sql);
+    public function getstat(){
+        $sql = "SELECT locataire.Nom as Locataire,propriété.Nom as Propriété,paiementloyer.Montant as loyer, contrat.ID
+                ,contrat.Montant as Montant,Durée,locataire.Adresse,locataire.Coordonnées,contrat.Date_de_début,contrat.Date_de_fin 
+                FROM `paiementloyer`,contrat,locataire,propriété
+                WHERE paiementloyer.ID_Contrat=contrat.ID AND contrat.ID_Locataire=locataire.ID AND contrat.ID_Propriété=propriété.ID";
+                return $this->SelectRow($sql);
                 
-    //             $données=[];
-    //              foreach($resulta as $row){
-    //                 $Montant=$row['Montant'];
-    //                 $Duree=$row['Durée'];
-    //                 $tltx=$Montant*$Duree;
-    //                 $row['totaux']=$tltx;
-    //                 $données=$row;
-    //              }
-    //              return  $données; 
-    //          }
+                // $données=[];
+                //  foreach($resulta as $row){
+                //     $Montant=$row['Montant'];
+                //     $Duree=$row['Durée'];
+                //     $tltx=$Montant*$Duree;
+                //     $row['totaux']=$tltx;
+                //     $données=$row;
+                //  }
+                //  return  $données; 
+             }
 
     }
 

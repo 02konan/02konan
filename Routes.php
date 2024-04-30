@@ -110,6 +110,13 @@ return [
         'controller' => \Controllers\Recette::class,
         'method' => 'Recettes',
     ],
+    // pages de d'authentification(connection  et inscription)
+    [
+        "url" => "/login",
+        "name" => "Authent",
+        'controller' => \Controllers\Authent::class,
+        'method' => 'connection',
+    ],
     
    
     

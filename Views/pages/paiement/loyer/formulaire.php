@@ -5,26 +5,6 @@
     <?php require 'Views/layout/breadcrumb.php' ?>
     <div class="container-fluid m-t-15 m-l-140">
         <div class="col-lg-10 ">
-            <?php if (isset ($msg['erreur'])): ?>
-                <div class="alert alert-danger alert-dismissible fade show">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <strong>
-                        <?= $msg['erreur'] ?>
-                    </strong>
-                </div>
-            <?php endif ?>
-            <?php if (isset ($msg['valider'])): ?>
-                <div class="alert alert-success alert-dismissible fade show">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <strong>
-                        <?= $msg['valider'] ?>
-                    </strong>
-                </div>
-            <?php endif ?>
             <div class="card card-outline-primary">
                 <div class="card-header">
                     <h4 class="m-b-0 text-white">Paiement</h4> 

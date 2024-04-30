@@ -19,8 +19,7 @@ class Contrat extends \Core\BaseController
         $InsertIdprop = $this->Database->getInsertIdprop();
         $InsertIdloc = $this->Database->getInsertIdloc();
         $Details = $this->Database->getDetails(); 
-       
-        
+        // die(var_dump($Details));
 
       view('pages/contrat/formulaire' , compact('Creat', 'InsertIdprop','InsertIdloc','Details','Update')); 
         
@@ -28,8 +27,9 @@ class Contrat extends \Core\BaseController
     public function vue()
 {
     $vues= $this->Database->getvue();
-    // $stat= $this->Database->getstat();
-    view('pages/contrat/voire',compact('vues'));
+    $stat= $this->Database->getstat();
+    // die(var_dump(json_encode($vues['Locataire'])));
+    view('pages/contrat/voire',compact('vues',"stat"));
 }
 
 }
